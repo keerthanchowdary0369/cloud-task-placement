@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Task Placement | DAA Project - Woxsen University</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0B2545',
+              teal: '#13A89E',
+              orange: '#F28C28',
+              grey: '#8D99AE',
+              dark: '#0A0F1D'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0A0F1D] text-slate-100 min-h-screen antialiased selection:bg-cyan-500 selection:text-white">
+
+  <!-- ======================================================== -->
+  <!-- NAVIGATION BAR                                           -->
+  <!-- ======================================================== -->
+  <header class="sticky top-0 z-50 glass-panel border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-cyan-400 bg-clip-text text-transparent">CloudTask Placement</span>
+          <span class="hidden md:inline-block ml-2 px-2 py-0.5 text-[10px] uppercase font-semibold tracking-wider rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">DAA Project</span>
+        </div>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <a href="#overview" class="hover:text-cyan-400 transition">Overview</a>
+        <a href="#pipeline" class="hover:text-cyan-400 transition">Pipeline</a>
+        <a href="#simulator" class="hover:text-cyan-400 transition text-cyan-400 font-semibold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          Live Simulator
+        </a>
+        <a href="#algorithms" class="hover:text-cyan-400 transition">Algorithms</a>
+        <a href="#experiments" class="hover:text-cyan-400 transition">Experiments</a>
+        <a href="#policy" class="hover:text-cyan-400 transition">Policy</a>
+        <a href="#codebase" class="hover:text-cyan-400 transition">Source Code</a>
+        <a href="#team" class="hover:text-cyan-400 transition">Team</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#simulator" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-md shadow-cyan-500/20 transition">
+          Launch Demo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- HERO SECTION                                             -->
+  <!-- ======================================================== -->
+  <section id="overview" class="relative overflow-hidden pt-12 pb-16 border-b border-slate-800/80">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(6,182,212,0.15),rgba(255,255,255,0))]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="text-center max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/90 border border-slate-700/80 text-xs font-medium text-cyan-300 mb-6 shadow-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          Woxsen University &bull; B.Tech CSE (2025–2029) &bull; DAA Internal Project
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          Cloud Task Placement
+        </h1>
+        <p class="mt-4 text-xl sm:text-2xl font-medium text-cyan-400">
+          Latency-aware VM placement using graphs, greedy algorithms and dynamic programming
+        </p>
+        <p class="mt-4 text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          An end-to-end combinatorial optimization pipeline combining Kruskal & Prim MST backbones, Floyd-Warshall & Johnson APSP latency engines, and multi-round Knapsack Dynamic Programming for cloud task scheduling.
+        </p>
+
+        <!-- Highlights Badges -->
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          <div class="p-4 rounded-xl glass-panel text-center hover:border-cyan-500/40 transition">
+            <div class="text-2xl font-bold text-white">95.2%</div>
+            <div class="text-xs text-slate-400 mt-1">Quality vs Exact MILP</div>
+          </div>
+          <div class="p-4 rounded-xl glass-panel text-center hover:border-cyan-500/40 transition">
+            <div class="text-2xl font-bold text-cyan-400">3.5x</div>
+            <div class="text-xs text-slate-400 mt-1">Lower Latency Under Overload</div>
+          </div>
+          <div class="p-4 rounded-xl glass-panel text-center hover:border-cyan-500/40 transition">
+            <div class="text-2xl font-bold text-amber-400">74%</div>
+            <div class="text-xs text-slate-400 mt-1">MST Backbone Link Reduction</div>
+          </div>
+          <div class="p-4 rounded-xl glass-panel text-center hover:border-cyan-500/40 transition">
+            <div class="text-2xl font-bold text-emerald-400">&lt; 0.02s</div>
+            <div class="text-xs text-slate-400 mt-1">600 Tasks on 80 Servers</div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="#simulator" class="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold text-sm shadow-lg shadow-cyan-500/25 transition flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+            </svg>
+            Interactive Live Simulator
+          </a>
+          <a href="#experiments" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm border border-slate-700 transition">
+            View Experimental Results
+          </a>
+          <a href="#codebase" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm border border-slate-700 transition">
+            Inspect Python Source (406 Lines)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- PROBLEM STATEMENT & FORMULATION                          -->
+  <!-- ======================================================== -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div class="lg:col-span-5 space-y-6">
+        <div>
+          <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Formal Specification</span>
+          <h2 class="text-3xl font-extrabold text-white mt-1">Problem Statement & Gap</h2>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          In cloud computing, servers are interconnected with physical communication links that introduce network latencies. Each task (VM or container) demands computational capacity, yields a commercial value, and originates from a user at a specific node.
+        </p>
+        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 space-y-3">
+          <div class="text-xs font-semibold text-slate-300">Objective Utility Function:</div>
+          <div class="p-3 bg-slate-900 rounded-lg text-cyan-300 font-mono text-sm border border-slate-800 text-center">
+            utility(t, s) = value(t) - &lambda; &times; latency(origin(t), s)
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            With penalty parameter &lambda; = 1.0. A task is admitted if and only if its utility is positive, without exceeding any server capacity: &sum;<sub>t: s(t)=s</sub> demand(t) &le; capacity(s).
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30">
+          <div class="text-xs font-bold text-amber-400 uppercase tracking-wide flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+            Gap Addressed
+          </div>
+          <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+            In standard textbooks (CLRS), algorithms like Kruskal, Dijkstra, and Knapsack are taught separately. This project synthesizes them into an operational placement pipeline and empirically quantifies the architectural trade-offs.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3 Core Pillars -->
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 hover:border-cyan-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-lg mb-4">1</div>
+            <h3 class="text-base font-bold text-white mb-2">Match Algorithms to Subproblems</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              MST for control backbone, All-Pairs Shortest Paths for user latency matrix, and Knapsack DP for per-server packings.
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-800/80 text-[11px] text-cyan-400 font-semibold">
+            Kruskal, Dijkstra, Knapsack DP
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 hover:border-cyan-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg mb-4">2</div>
+            <h3 class="text-base font-bold text-white mb-2">Respect Real Constraints</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Enforce server memory/CPU capacity limits and network latency penalties on every placement decision.
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-800/80 text-[11px] text-amber-400 font-semibold">
+            Strict Capacity Invariance
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 hover:border-cyan-500/30 transition flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg mb-4">3</div>
+            <h3 class="text-base font-bold text-white mb-2">Measure Exact Trade-Offs</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Compare execution time and solution optimality against exact MILP solvers across varied densities and load tightness.
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-800/80 text-[11px] text-emerald-400 font-semibold">
+            Empirical Benchmark Rigor
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5-STAGE PIPELINE ARCHITECTURE                            -->
+  <!-- ======================================================== -->
+  <section id="pipeline" class="py-16 bg-slate-900/60 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">System Design</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1">The 5-Stage Placement Pipeline</h2>
+        <p class="text-slate-400 text-sm mt-2">End-to-end architecture bridging graph algorithms, dynamic programming, and systems engineering.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <!-- Stage 1 -->
+        <div class="p-5 rounded-xl glass-panel relative border border-slate-800 hover:border-cyan-500/40 transition">
+          <div class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider">Stage 01</div>
+          <h4 class="text-sm font-bold text-white mt-1 mb-2">Topology & Workload</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Generate synthetic 2D server mesh with distance-based latency + jitter. Synthesize task demands, values, and user origins.
+          </p>
+          <div class="mt-4 text-[10px] font-mono bg-slate-900/80 p-2 rounded text-slate-300 border border-slate-800">
+            src/graph.py
+          </div>
+        </div>
+
+        <!-- Stage 2 -->
+        <div class="p-5 rounded-xl glass-panel relative border border-slate-800 hover:border-amber-500/40 transition">
+          <div class="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-wider">Stage 02</div>
+          <h4 class="text-sm font-bold text-white mt-1 mb-2">MST Backbone</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Extract minimum-cost spanning tree via Kruskal (Union-Find) and Prim (Heap). Trims ~74% of links for control traffic.
+          </p>
+          <div class="mt-4 text-[10px] font-mono bg-slate-900/80 p-2 rounded text-slate-300 border border-slate-800">
+            src/mst.py
+          </div>
+        </div>
+
+        <!-- Stage 3 -->
+        <div class="p-5 rounded-xl glass-panel relative border border-slate-800 hover:border-cyan-500/40 transition">
+          <div class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider">Stage 03</div>
+          <h4 class="text-sm font-bold text-white mt-1 mb-2">Latency Matrix</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Compute All-Pairs Shortest Paths. Automatically selects Johnson for sparse topologies or Floyd-Warshall for dense meshes.
+          </p>
+          <div class="mt-4 text-[10px] font-mono bg-slate-900/80 p-2 rounded text-slate-300 border border-slate-800">
+            src/shortest.py
+          </div>
+        </div>
+
+        <!-- Stage 4 -->
+        <div class="p-5 rounded-xl glass-panel relative border border-slate-800 hover:border-emerald-500/40 transition">
+          <div class="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-wider">Stage 04</div>
+          <h4 class="text-sm font-bold text-white mt-1 mb-2">Task Placement</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Proposal rounds: pending tasks propose to highest utility servers; servers execute 0-1 Knapsack DP on proposals.
+          </p>
+          <div class="mt-4 text-[10px] font-mono bg-slate-900/80 p-2 rounded text-slate-300 border border-slate-800">
+            src/placement.py
+          </div>
+        </div>
+
+        <!-- Stage 5 -->
+        <div class="p-5 rounded-xl glass-panel relative border border-slate-800 hover:border-indigo-500/40 transition">
+          <div class="text-[10px] font-mono text-indigo-400 font-bold uppercase tracking-wider">Stage 05</div>
+          <h4 class="text-sm font-bold text-white mt-1 mb-2">Policy & Metrics</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Measure utility, latency stretch, capacity utilization, and compare against Nearest-First, Random, and exact MILP.
+          </p>
+          <div class="mt-4 text-[10px] font-mono bg-slate-900/80 p-2 rounded text-slate-300 border border-slate-800">
+            run_experiments.py
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- INTERACTIVE CLOUD PLACEMENT SIMULATOR                    -->
+  <!-- ======================================================== -->
+  <section id="simulator" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-400 mb-2">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          Live In-Browser Simulation Engine
+        </div>
+        <h2 class="text-3xl font-extrabold text-white">Interactive Cloud Topology Visualizer</h2>
+        <p class="text-slate-400 text-sm mt-1">Run algorithms on synthetic topologies, drag or click servers, and explore load distributions.</p>
+      </div>
+
+      <!-- Quick Algo Toggle -->
+      <div class="flex items-center gap-2 p-1 bg-slate-900/80 border border-slate-800 rounded-xl">
+        <button data-algo="greedy_dp" class="algo-selector-btn px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition">
+          Greedy + Knapsack DP (Proposed)
+        </button>
+        <button data-algo="greedy_nearest" class="algo-selector-btn px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white bg-slate-800/80 border border-slate-700/60 transition">
+          Greedy-Nearest (Baseline)
+        </button>
+        <button data-algo="random" class="algo-selector-btn px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white bg-slate-800/80 border border-slate-700/60 transition">
+          Random First-Fit (Baseline)
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Metrics Dashboard -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
+      <div class="p-3.5 rounded-xl glass-panel border border-slate-800">
+        <div class="text-[11px] text-slate-400">Total Utility</div>
+        <div id="metric-utility" class="text-xl font-bold text-cyan-400 mt-1">0</div>
+        <div class="text-[10px] text-slate-500 mt-0.5">Objective earned</div>
+      </div>
+      <div class="p-3.5 rounded-xl glass-panel border border-slate-800">
+        <div class="text-[11px] text-slate-400">Tasks Placed</div>
+        <div id="metric-placed" class="text-xl font-bold text-white mt-1">0%</div>
+        <div class="text-[10px] text-slate-500 mt-0.5">Admission rate</div>
+      </div>
+      <div class="p-3.5 rounded-xl glass-panel border border-slate-800">
+        <div class="text-[11px] text-slate-400">Average Latency</div>
+        <div id="metric-latency" class="text-xl font-bold text-amber-400 mt-1">0 ms</div>
+        <div class="text-[10px] text-slate-500 mt-0.5">SLA delivery speed</div>
+      </div>
+      <div class="p-3.5 rounded-xl glass-panel border border-slate-800">
+        <div class="text-[11px] text-slate-400">Cloud Capacity Used</div>
+        <div id="metric-cap-used" class="text-xl font-bold text-emerald-400 mt-1">0%</div>
+        <div class="text-[10px] text-slate-500 mt-0.5">Server utilization</div>
+      </div>
+      <div class="p-3.5 rounded-xl glass-panel border border-slate-800">
+        <div class="text-[11px] text-slate-400">MST Link Reduction</div>
+        <div id="metric-links" class="text-xl font-bold text-orange-400 mt-1">0%</div>
+        <div class="text-[10px] text-slate-500 mt-0.5">Trimming non-backbone</div>
+      </div>
+      <div class="p-3.5 rounded-xl glass-panel border border-slate-800">
+        <div class="text-[11px] text-slate-400">Placement Runtime</div>
+        <div id="metric-runtime" class="text-xl font-bold text-indigo-400 mt-1">0 ms</div>
+        <div class="text-[10px] text-slate-500 mt-0.5">Browser execution time</div>
+      </div>
+    </div>
+
+    <!-- Simulator Workspace -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- Left Controls Panel -->
+      <div class="lg:col-span-4 p-5 rounded-2xl glass-panel border border-slate-800 space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+            Simulation Parameters
+          </h3>
+          <button id="btn-random-seed" class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 transition">
+            Randomize Seed
+          </button>
+        </div>
+
+        <!-- Servers Slider -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs">
+            <span class="text-slate-400">Servers (Nodes V)</span>
+            <span id="slider-servers-val" class="font-mono font-bold text-cyan-400">40</span>
+          </div>
+          <input type="range" id="slider-servers" min="10" max="60" value="40" step="5" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+        </div>
+
+        <!-- Tasks Slider -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs">
+            <span class="text-slate-400">Workload Tasks (T)</span>
+            <span id="slider-tasks-val" class="font-mono font-bold text-cyan-400">120</span>
+          </div>
+          <input type="range" id="slider-tasks" min="20" max="250" value="120" step="10" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+        </div>
+
+        <!-- Tightness / Load Factor -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs">
+            <span class="text-slate-400">Cloud Load Factor (&Sigma;d / &Sigma;C)</span>
+            <span id="slider-tightness-val" class="font-mono font-bold text-amber-400">0.9</span>
+          </div>
+          <input type="range" id="slider-tightness" min="0.4" max="1.5" value="0.9" step="0.1" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+          <div class="flex justify-between text-[10px] text-slate-500">
+            <span>0.4 (Underutilized)</span>
+            <span>1.0 (Exact)</span>
+            <span>1.5 (Heavy Overload)</span>
+          </div>
+        </div>
+
+        <!-- Link Density -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs">
+            <span class="text-slate-400">Link Density Factor</span>
+            <span id="slider-density-val" class="font-mono font-bold text-slate-200">1.0</span>
+          </div>
+          <input type="range" id="slider-density" min="0.5" max="3.0" value="1.0" step="0.5" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+        </div>
+
+        <!-- Lambda Latency Penalty -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs">
+            <span class="text-slate-400">Latency Penalty &lambda;</span>
+            <span id="slider-lambda-val" class="font-mono font-bold text-slate-200">1.0</span>
+          </div>
+          <input type="range" id="slider-lambda" min="0.0" max="3.0" value="1.0" step="0.2" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+        </div>
+
+        <!-- Seed input -->
+        <div class="flex items-center justify-between text-xs pt-1">
+          <span class="text-slate-400">PRNG Seed:</span>
+          <input type="number" id="input-seed" value="4" class="w-20 px-2 py-1 rounded bg-slate-900 border border-slate-700 font-mono text-center text-cyan-300 text-xs">
+        </div>
+
+        <!-- Visual Toggles -->
+        <div class="pt-3 border-t border-slate-800 space-y-2">
+          <div class="text-xs font-semibold text-slate-300 mb-2">Display Overlays</div>
+          <label class="flex items-center gap-2.5 text-xs text-slate-300 cursor-pointer">
+            <input type="checkbox" id="toggle-mst" checked class="w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-700">
+            <span>Show MST Backbone <strong class="text-orange-400">(Orange Links)</strong></span>
+          </label>
+          <label class="flex items-center gap-2.5 text-xs text-slate-300 cursor-pointer">
+            <input type="checkbox" id="toggle-links" checked class="w-4 h-4 rounded text-cyan-500 bg-slate-800 border-slate-700">
+            <span>Show All Network Mesh Links <span class="text-slate-400">(Grey)</span></span>
+          </label>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="pt-3 border-t border-slate-800 grid grid-cols-2 gap-2">
+          <button onclick="loadPresentationPreset()" class="px-3 py-2 rounded-lg bg-gradient-to-r from-amber-500/20 to-orange-500/20 hover:from-amber-500/30 hover:to-orange-500/30 text-amber-300 border border-amber-500/40 text-xs font-semibold transition flex items-center justify-center gap-1.5" title="Reset parameters to the exact 40-server demo instance from Slide 10">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Slide 40-Node Demo
+          </button>
+          <button onclick="exportSimulationReport()" class="px-3 py-2 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/30 hover:to-blue-500/30 text-cyan-300 border border-cyan-500/40 text-xs font-semibold transition flex items-center justify-center gap-1.5" title="Export current simulation configuration and placement results as JSON">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Export JSON
+          </button>
+        </div>
+
+        <!-- Proposal Rounds Log -->
+        <div class="pt-3 border-t border-slate-800">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-semibold text-slate-300">Proposal Rounds Log</span>
+            <span id="current-algo-badge" class="text-[10px] text-cyan-400 font-mono">Greedy+DP</span>
+          </div>
+          <div id="rounds-container" class="max-h-48 overflow-y-auto space-y-2 pr-1">
+            <!-- Dynamically populated rounds -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Interactive Canvas -->
+      <div class="lg:col-span-8 flex flex-col gap-4">
+        <div class="p-4 rounded-2xl glass-panel border border-slate-800 relative">
+          <!-- Canvas Top Bar -->
+          <div class="flex items-center justify-between mb-3 px-1">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold text-white uppercase tracking-wider">Topology Canvas</span>
+              <span class="text-[11px] text-slate-400">(Click any node to inspect hosted tasks)</span>
+            </div>
+            <!-- Heatmap Legend -->
+            <div class="flex items-center gap-2 text-[10px] text-slate-400">
+              <span>0% Load</span>
+              <div class="w-24 h-2.5 rounded-full bg-gradient-to-r from-[#FFFFB2] via-[#41B6C4] to-[#081D58] border border-slate-700"></div>
+              <span>100% Load</span>
+            </div>
+          </div>
+
+          <!-- Canvas Container -->
+          <div class="relative w-full aspect-[4/3] sm:aspect-[16/11] bg-slate-950/80 rounded-xl overflow-hidden border border-slate-800 shadow-inner">
+            <canvas id="cloud-canvas"></canvas>
+          </div>
+
+          <div class="mt-3 flex flex-wrap items-center justify-between text-xs text-slate-400 px-1">
+            <div class="flex items-center gap-4">
+              <span class="flex items-center gap-1.5">
+                <span class="w-3 h-1 bg-[#F28C28] rounded"></span>
+                <span>MST Backbone (Control & Replication)</span>
+              </span>
+              <span class="flex items-center gap-1.5">
+                <span class="w-3 h-1 bg-slate-500 rounded"></span>
+                <span>Mesh Links (User Shortest Paths)</span>
+              </span>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1 sm:mt-0">
+              Node size = Server capacity &bull; Color = Used/Capacity
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SERVER INSPECTION MODAL                                  -->
+  <!-- ======================================================== -->
+  <div id="server-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden fade-in">
+      <div class="p-5 border-b border-slate-800 flex items-center justify-between">
+        <div>
+          <h3 id="modal-server-title" class="text-lg font-bold text-white">Server S0 Details</h3>
+          <p id="modal-server-cap" class="text-xs text-cyan-400 mt-0.5">Capacity info</p>
+        </div>
+        <button id="modal-close-btn" class="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white transition">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Capacity Bar -->
+      <div class="px-5 py-3 bg-slate-950/60 border-b border-slate-800">
+        <div class="flex justify-between text-xs text-slate-400 mb-1.5">
+          <span>Capacity Usage Ratio</span>
+          <span>Max Capacity</span>
+        </div>
+        <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+          <div id="modal-server-progress" class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Placed Tasks List -->
+      <div class="p-5 overflow-y-auto flex-1">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Tasks Hosted on this Server</h4>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-300">
+            <thead class="text-[11px] uppercase tracking-wider text-slate-400 bg-slate-800/60 border-b border-slate-700">
+              <tr>
+                <th class="py-2 px-3">Task ID</th>
+                <th class="py-2 px-3">Demand</th>
+                <th class="py-2 px-3">Value</th>
+                <th class="py-2 px-3">User Origin</th>
+                <th class="py-2 px-3">Latency</th>
+                <th class="py-2 px-3">Net Utility</th>
+              </tr>
+            </thead>
+            <tbody id="modal-task-rows">
+              <!-- Dynamically populated tasks -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="p-4 bg-slate-950/80 border-t border-slate-800 text-right">
+        <button onclick="closeServerModal()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white transition">
+          Close Inspector
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- ALGORITHM THEORY & CLRS COMPLEXITY MATRIX               -->
+  <!-- ======================================================== -->
+  <section id="algorithms" class="py-16 bg-slate-900/60 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Algorithmic Foundations</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1">Algorithms, Complexity & Correctness Proofs</h2>
+        <p class="text-slate-400 text-sm mt-2">Every algorithm used in the pipeline, its mathematical asymptotic bound, and role in cloud scheduling.</p>
+      </div>
+
+      <!-- Complexity Table -->
+      <div class="overflow-x-auto rounded-2xl glass-panel border border-slate-800 mb-12">
+        <table class="w-full text-left text-xs">
+          <thead class="text-xs font-semibold uppercase tracking-wider text-slate-400 bg-slate-800/80 border-b border-slate-700">
+            <tr>
+              <th class="py-3.5 px-4">Subproblem</th>
+              <th class="py-3.5 px-4">Algorithm</th>
+              <th class="py-3.5 px-4 font-mono">Time Complexity</th>
+              <th class="py-3.5 px-4 font-mono">Space</th>
+              <th class="py-3.5 px-4">Role in Placement Pipeline</th>
+              <th class="py-3.5 px-4">Source Module</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-slate-300">
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="py-3 px-4 font-medium text-white">Backbone Network</td>
+              <td class="py-3 px-4 text-cyan-300 font-semibold">Kruskal (1956)</td>
+              <td class="py-3 px-4 font-mono text-amber-400 font-medium">O(E log E)</td>
+              <td class="py-3 px-4 font-mono">O(V)</td>
+              <td class="py-3 px-4 text-slate-300">Greedy MST via edge sorting and Union-Find (DSU). Drops 74% links.</td>
+              <td class="py-3 px-4 font-mono text-slate-400">src/mst.py</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="py-3 px-4 font-medium text-white">Backbone Verification</td>
+              <td class="py-3 px-4 text-cyan-300 font-semibold">Prim (1957)</td>
+              <td class="py-3 px-4 font-mono text-amber-400 font-medium">O(E log V)</td>
+              <td class="py-3 px-4 font-mono">O(V)</td>
+              <td class="py-3 px-4 text-slate-300">Grows tree from root using min-heap. Exact cross-check with Kruskal.</td>
+              <td class="py-3 px-4 font-mono text-slate-400">src/mst.py</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="py-3 px-4 font-medium text-white">Single-Source Latency</td>
+              <td class="py-3 px-4 text-cyan-300 font-semibold">Dijkstra (1959)</td>
+              <td class="py-3 px-4 font-mono text-amber-400 font-medium">O((V+E) log V)</td>
+              <td class="py-3 px-4 font-mono">O(V)</td>
+              <td class="py-3 px-4 text-slate-300">Shortest paths with non-negative latency weights.</td>
+              <td class="py-3 px-4 font-mono text-slate-400">src/shortest.py</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="py-3 px-4 font-medium text-white">Credits / Negative Edges</td>
+              <td class="py-3 px-4 text-cyan-300 font-semibold">Bellman-Ford</td>
+              <td class="py-3 px-4 font-mono text-amber-400 font-medium">O(V &times; E)</td>
+              <td class="py-3 px-4 font-mono">O(V)</td>
+              <td class="py-3 px-4 text-slate-300">Detects negative-weight cycles and computes potential function h(u).</td>
+              <td class="py-3 px-4 font-mono text-slate-400">src/shortest.py</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="py-3 px-4 font-medium text-white">All-Pairs Latency (Dense)</td>
+              <td class="py-3 px-4 text-cyan-300 font-semibold">Floyd-Warshall (1962)</td>
+              <td class="py-3 px-4 font-mono text-amber-400 font-medium">O(V<sup>3</sup>)</td>
+              <td class="py-3 px-4 font-mono">O(V<sup>2</sup>)</td>
+              <td class="py-3 px-4 text-slate-300">Dynamic programming matrix relaxation. Optimal when links approach V<sup>2</sup>.</td>
+              <td class="py-3 px-4 font-mono text-slate-400">src/shortest.py</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="py-3 px-4 font-medium text-white">All-Pairs Latency (Sparse)</td>
+              <td class="py-3 px-4 text-cyan-300 font-semibold">Johnson (1977)</td>
+              <td class="py-3 px-4 font-mono text-amber-400 font-medium">O(VE + V<sup>2</sup> log V)</td>
+              <td class="py-3 px-4 font-mono">O(V<sup>2</sup>)</td>
+              <td class="py-3 px-4 text-slate-300">Reweighting with Bellman-Ford, then V Dijkstra runs. 12x faster on sparse networks.</td>
+              <td class="py-3 px-4 font-mono text-slate-400">src/shortest.py</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="py-3 px-4 font-medium text-white">Value Upper Bound</td>
+              <td class="py-3 px-4 text-cyan-300 font-semibold">Fractional Knapsack</td>
+              <td class="py-3 px-4 font-mono text-amber-400 font-medium">O(n log n)</td>
+              <td class="py-3 px-4 font-mono">O(n)</td>
+              <td class="py-3 px-4 text-slate-300">Greedy by value density (p/w). Provides continuous upper bound.</td>
+              <td class="py-3 px-4 font-mono text-slate-400">src/greedy.py</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="py-3 px-4 font-medium text-white">Per-Server Task Packing</td>
+              <td class="py-3 px-4 text-cyan-300 font-semibold">0-1 Knapsack DP</td>
+              <td class="py-3 px-4 font-mono text-amber-400 font-medium">O(n &times; C)</td>
+              <td class="py-3 px-4 font-mono">O(n &times; C)</td>
+              <td class="py-3 px-4 text-slate-300">Exact pseudo-polynomial DP with back-pointer subset recovery.</td>
+              <td class="py-3 px-4 font-mono text-slate-400">src/dp.py</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="py-3 px-4 font-medium text-white">Deadline Scheduling</td>
+              <td class="py-3 px-4 text-cyan-300 font-semibold">Job Sequencing</td>
+              <td class="py-3 px-4 font-mono text-amber-400 font-medium">O(n<sup>2</sup>)</td>
+              <td class="py-3 px-4 font-mono">O(d<sub>max</sub>)</td>
+              <td class="py-3 px-4 text-slate-300">Greedy by profit into latest available slot. Proven by exchange argument.</td>
+              <td class="py-3 px-4 font-mono text-slate-400">src/greedy.py</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Algorithmic Correctness Arguments (3 Panels) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-5 rounded-2xl glass-panel border border-slate-800">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+            <h4 class="text-sm font-bold text-white">Feasibility Guarantee</h4>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Every server executes 0-1 Knapsack DP strictly bounded by its remaining capacity <code class="text-cyan-300">remaining[s]</code>. Demands of chosen tasks are subtracted immediately. Thus, no server's capacity can ever be exceeded: <code class="text-cyan-300">&sum; demand &le; capacity</code>.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl glass-panel border border-slate-800">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+            <h4 class="text-sm font-bold text-white">Guaranteed Termination</h4>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            In every proposal round, unplaced tasks that get rejected by server <code class="text-cyan-300">s</code> add <code class="text-cyan-300">s</code> to their banned set. Since there are only <code class="text-cyan-300">V</code> servers, a task exhausts all candidates in at most <code class="text-cyan-300">V</code> iterations. The loop terminates in &le; <code class="text-cyan-300">V</code> rounds.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl glass-panel border border-slate-800">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <h4 class="text-sm font-bold text-white">Local Optimality & Heuristic Role</h4>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            For each server's received proposal set, 0-1 Knapsack DP computes the exact optimal subset. While the Generalized Assignment Problem (GAP) is NP-hard, this heuristic reaches <strong class="text-white">95.2% of the global MILP optimum</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- EXPERIMENTS & BENCHMARK CHARTS                          -->
+  <!-- ======================================================== -->
+  <section id="experiments" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Experimental Evaluation</span>
+      <h2 class="text-3xl font-extrabold text-white mt-1">Empirical Benchmark Results</h2>
+      <p class="text-slate-400 text-sm mt-2">Reproducing the 4 experimental evaluations comparing runtime, density, solution quality against MILP, and performance under overload.</p>
+    </div>
+
+    <!-- 4 Experiments Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Exp 1: Runtime vs Network Size -->
+      <div class="p-6 rounded-2xl glass-panel border border-slate-800 space-y-4">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider">Experiment 01</span>
+            <h3 class="text-base font-bold text-white mt-0.5">Runtime vs Network Size (25 to 200 Servers)</h3>
+            <p class="text-xs text-slate-400 mt-1">Single-source Dijkstra & Johnson vs cubic Floyd-Warshall.</p>
+          </div>
+          <div class="flex items-center gap-1 bg-slate-900/80 p-1 rounded-lg border border-slate-800">
+            <button onclick="toggleExpView('runtime', 'chart')" id="btn-runtime-chart" class="px-2 py-0.5 text-[10px] font-bold rounded bg-cyan-500/20 text-cyan-300">Chart.js</button>
+            <button onclick="toggleExpView('runtime', 'img')" id="btn-runtime-img" class="px-2 py-0.5 text-[10px] font-medium rounded text-slate-400 hover:text-white">Matplotlib</button>
+          </div>
+        </div>
+        <div class="h-64 w-full relative flex items-center justify-center">
+          <canvas id="chart-runtime"></canvas>
+          <img id="img-runtime" src="assets/images/runtime_vs_size.png" class="hidden h-64 w-full object-contain rounded-lg bg-slate-950/60 p-2 border border-slate-800" alt="Runtime vs size">
+        </div>
+        <div class="p-3 bg-slate-900/80 rounded-xl text-xs text-slate-300 border border-slate-800 space-y-1">
+          <div class="font-semibold text-white">Key Finding:</div>
+          <p class="text-slate-400 leading-relaxed">
+            At 200 servers, Johnson executes in <strong>24.5 ms</strong> compared to <strong>303.2 ms</strong> for Floyd-Warshall (12x faster). Kruskal and Prim execute in <strong>&lt; 0.3 ms</strong> across all tested sizes.
+          </p>
+        </div>
+      </div>
+
+      <!-- Exp 2: Sparse vs Dense APSP -->
+      <div class="p-6 rounded-2xl glass-panel border border-slate-800 space-y-4">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider">Experiment 02</span>
+            <h3 class="text-base font-bold text-white mt-0.5">APSP: Sparse vs Dense Network (V = 120)</h3>
+            <p class="text-xs text-slate-400 mt-1">Varying link count from 191 to 3,427 edges.</p>
+          </div>
+          <div class="flex items-center gap-1 bg-slate-900/80 p-1 rounded-lg border border-slate-800">
+            <button onclick="toggleExpView('density', 'chart')" id="btn-density-chart" class="px-2 py-0.5 text-[10px] font-bold rounded bg-cyan-500/20 text-cyan-300">Chart.js</button>
+            <button onclick="toggleExpView('density', 'img')" id="btn-density-img" class="px-2 py-0.5 text-[10px] font-medium rounded text-slate-400 hover:text-white">Matplotlib</button>
+          </div>
+        </div>
+        <div class="h-64 w-full relative flex items-center justify-center">
+          <canvas id="chart-density"></canvas>
+          <img id="img-density" src="assets/images/apsp_density.png" class="hidden h-64 w-full object-contain rounded-lg bg-slate-950/60 p-2 border border-slate-800" alt="Sparse vs dense">
+        </div>
+        <div class="p-3 bg-slate-900/80 rounded-xl text-xs text-slate-300 border border-slate-800 space-y-1">
+          <div class="font-semibold text-white">Key Finding:</div>
+          <p class="text-slate-400 leading-relaxed">
+            Floyd-Warshall runtime remains flat (~61 ms) as predicted by O(V<sup>3</sup>). At 191 links, Johnson is <strong>5.2x faster</strong> (11.9 ms vs 61.4 ms). As links approach complete graph (3427 edges), Johnson scales to 51.6 ms.
+          </p>
+        </div>
+      </div>
+
+      <!-- Exp 3: Quality vs Exact MILP -->
+      <div class="p-6 rounded-2xl glass-panel border border-slate-800 space-y-4">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider">Experiment 03</span>
+            <h3 class="text-base font-bold text-white mt-0.5">Solution Quality vs Exact Optimum (MILP)</h3>
+            <p class="text-xs text-slate-400 mt-1">12 instances solved to mathematical global optimum.</p>
+          </div>
+          <div class="flex items-center gap-1 bg-slate-900/80 p-1 rounded-lg border border-slate-800">
+            <button onclick="toggleExpView('quality', 'chart')" id="btn-quality-chart" class="px-2 py-0.5 text-[10px] font-bold rounded bg-cyan-500/20 text-cyan-300">Chart.js</button>
+            <button onclick="toggleExpView('quality', 'img')" id="btn-quality-img" class="px-2 py-0.5 text-[10px] font-medium rounded text-slate-400 hover:text-white">Matplotlib</button>
+          </div>
+        </div>
+        <div class="h-64 w-full relative flex items-center justify-center">
+          <canvas id="chart-quality"></canvas>
+          <img id="img-quality" src="assets/images/quality_vs_optimal.png" class="hidden h-64 w-full object-contain rounded-lg bg-slate-950/60 p-2 border border-slate-800" alt="Quality vs optimal">
+        </div>
+        <div class="p-3 bg-slate-900/80 rounded-xl text-xs text-slate-300 border border-slate-800 space-y-1">
+          <div class="font-semibold text-white">Key Finding:</div>
+          <p class="text-slate-400 leading-relaxed">
+            Greedy+DP achieves <strong>95.2%</strong> of optimal utility (worst case 90.9%). Greedy-nearest achieves <strong>95.4%</strong> (worst case 88.0%). Naive Random placement achieves only <strong>61.5%</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Exp 4: Behaviour Under Load -->
+      <div class="p-6 rounded-2xl glass-panel border border-slate-800 space-y-4">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider">Experiment 04</span>
+            <h3 class="text-base font-bold text-white mt-0.5">Behavior Under Overload (60 Servers, 250 Tasks)</h3>
+            <p class="text-xs text-slate-400 mt-1">Load sweep from 0.4 (underloaded) to 1.5 (heavily overloaded).</p>
+          </div>
+          <div class="flex items-center gap-1 bg-slate-900/80 p-1 rounded-lg border border-slate-800">
+            <button onclick="toggleExpView('load', 'chart')" id="btn-load-chart" class="px-2 py-0.5 text-[10px] font-bold rounded bg-cyan-500/20 text-cyan-300">Chart.js</button>
+            <button onclick="toggleExpView('load', 'img')" id="btn-load-img" class="px-2 py-0.5 text-[10px] font-medium rounded text-slate-400 hover:text-white">Matplotlib</button>
+          </div>
+        </div>
+        <div class="h-64 w-full relative flex items-center justify-center">
+          <div id="container-load-chart" class="grid grid-cols-2 gap-2 h-full w-full">
+            <div class="h-full"><canvas id="chart-load-utility"></canvas></div>
+            <div class="h-full"><canvas id="chart-load-latency"></canvas></div>
+          </div>
+          <img id="img-load" src="assets/images/tightness_sweep.png" class="hidden h-64 w-full object-contain rounded-lg bg-slate-950/60 p-2 border border-slate-800" alt="Tightness sweep">
+        </div>
+        <div class="p-3 bg-slate-900/80 rounded-xl text-xs text-slate-300 border border-slate-800 space-y-1">
+          <div class="font-semibold text-white">Critical Architectural Breakthrough:</div>
+          <p class="text-slate-400 leading-relaxed">
+            At load 1.5, Greedy+DP maintains <strong>1.07 ms average latency</strong>, whereas Nearest-First blows up to <strong>3.73 ms (3.5x higher!)</strong> at virtually identical utility (6,182 vs 6,179). Knapsack DP rejects low-value distant tasks from hogging capacity!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backbone Reduction Table -->
+    <div class="mt-8 p-6 rounded-2xl glass-panel border border-slate-800">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+        <div>
+          <h3 class="text-base font-bold text-white">Backbone Network Reduction & Latency Stretch</h3>
+          <p class="text-xs text-slate-400">Evaluation of Kruskal/Prim MST backbone savings vs full topology mesh.</p>
+        </div>
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/10 text-orange-400 border border-orange-500/20">
+          Replication & Control Plane
+        </span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="text-slate-400 uppercase tracking-wider bg-slate-800/80 border-b border-slate-700">
+            <tr>
+              <th class="py-3 px-4">Servers (V)</th>
+              <th class="py-3 px-4">Full Links</th>
+              <th class="py-3 px-4">MST Backbone Links (V-1)</th>
+              <th class="py-3 px-4">Mesh Cost</th>
+              <th class="py-3 px-4">Backbone Cost</th>
+              <th class="py-3 px-4 font-semibold text-emerald-400">Link Saving %</th>
+              <th class="py-3 px-4 font-semibold text-amber-400">Latency Stretch</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-slate-300 font-mono">
+            <tr>
+              <td class="py-3 px-4 font-bold text-white">30</td>
+              <td class="py-3 px-4">109</td>
+              <td class="py-3 px-4 text-orange-400">29</td>
+              <td class="py-3 px-4">1,280.8 ms</td>
+              <td class="py-3 px-4">210.3 ms</td>
+              <td class="py-3 px-4 text-emerald-400 font-bold">73.4%</td>
+              <td class="py-3 px-4 text-amber-400">1.76x</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-bold text-white">60</td>
+              <td class="py-3 px-4">228</td>
+              <td class="py-3 px-4 text-orange-400">59</td>
+              <td class="py-3 px-4">1,919.6 ms</td>
+              <td class="py-3 px-4">334.4 ms</td>
+              <td class="py-3 px-4 text-emerald-400 font-bold">74.1%</td>
+              <td class="py-3 px-4 text-amber-400">2.42x</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-bold text-white">100</td>
+              <td class="py-3 px-4">371</td>
+              <td class="py-3 px-4 text-orange-400">99</td>
+              <td class="py-3 px-4">2,590.7 ms</td>
+              <td class="py-3 px-4">469.4 ms</td>
+              <td class="py-3 px-4 text-emerald-400 font-bold">73.3%</td>
+              <td class="py-3 px-4 text-amber-400">2.68x</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- POLICY RECOMMENDATIONS & DECISION ADVISOR                -->
+  <!-- ======================================================== -->
+  <section id="policy" class="py-16 bg-slate-900/60 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Engineering Guidelines</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1">Strategic Policy Recommendations</h2>
+        <p class="text-slate-400 text-sm mt-2">Concrete operational rules derived from theoretical complexity and empirical measurements.</p>
+      </div>
+
+      <!-- 4 Policy Rules -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="p-5 rounded-2xl glass-panel border border-slate-800 space-y-2.5">
+          <div class="text-xs font-mono font-bold text-orange-400 uppercase tracking-wider">Policy 01</div>
+          <h4 class="text-base font-bold text-white">Dual-Plane Topology</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Use the MST backbone for distributed database replication and cluster heartbeat control (saving 74% link overhead). Route user SLA traffic strictly over shortest paths to avoid the 1.8x–2.7x latency stretch.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl glass-panel border border-slate-800 space-y-2.5">
+          <div class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">Policy 02</div>
+          <h4 class="text-base font-bold text-white">APSP Selection Rule</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Deploy Johnson on sparse networks (<code class="text-cyan-300">E &lt; V<sup>2</sup>/8</code>). Switch to Floyd-Warshall only when link density approaches dense matrix mesh where simple array indexing beats heap overhead.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl glass-panel border border-slate-800 space-y-2.5">
+          <div class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">Policy 03</div>
+          <h4 class="text-base font-bold text-white">Overload Scheduling</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Switch placement solver to <strong>Greedy + Knapsack DP</strong> once cloud load passes 1.0. It delivers 3.5x lower latency than Nearest-First while achieving the same peak total utility.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl glass-panel border border-slate-800 space-y-2.5">
+          <div class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">Policy 04</div>
+          <h4 class="text-base font-bold text-white">Capacity Headroom</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Utility degrades from 8,080 to 6,182 as load rises from 0.4 to 1.5. Maintain 20% capacity headroom to avoid heavy latency degradation and task rejection.
+          </p>
+        </div>
+      </div>
+
+      <!-- Interactive Policy Advisor Calculator -->
+      <div class="p-6 rounded-2xl glass-panel border border-slate-800">
+        <div class="flex items-center gap-2 mb-6">
+          <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">
+            &Sigma;
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white">Interactive Infrastructure Policy Advisor</h3>
+            <p class="text-xs text-slate-400">Input your datacenter specifications to obtain automated algorithmic routing and placement recommendations.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Server Nodes (V)</label>
+            <input type="number" id="policy-v" value="60" min="5" max="1000" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white font-mono text-sm focus:border-cyan-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Active Network Links (E)</label>
+            <input type="number" id="policy-e" value="200" min="4" max="100000" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white font-mono text-sm focus:border-cyan-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1">Expected Load Ratio (&Sigma;demand / &Sigma;capacity)</label>
+            <input type="number" id="policy-load" value="1.2" step="0.1" min="0.1" max="3.0" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white font-mono text-sm focus:border-cyan-500 focus:outline-none">
+          </div>
+        </div>
+
+        <!-- Advisor Output Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-slate-800">
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="text-[11px] text-slate-400 uppercase font-semibold">Recommended APSP Engine</div>
+            <div id="advisor-apsp" class="text-base font-bold text-cyan-400 mt-1">Johnson Algorithm</div>
+            <p id="advisor-apsp-desc" class="text-xs text-slate-400 mt-2 leading-relaxed">Sparse network recommendation.</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="text-[11px] text-slate-400 uppercase font-semibold">Recommended Placement Strategy</div>
+            <div id="advisor-placement" class="text-base font-bold text-emerald-400 mt-1">Greedy Proposals + Knapsack DP</div>
+            <p id="advisor-placement-desc" class="text-xs text-slate-400 mt-2 leading-relaxed">High load placement recommendation.</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="text-[11px] text-slate-400 uppercase font-semibold">Backbone Link Savings</div>
+            <div id="advisor-backbone" class="text-base font-bold text-amber-400 mt-1">70.5% Reduction</div>
+            <p id="advisor-backbone-desc" class="text-xs text-slate-400 mt-2 leading-relaxed">Control plane link trimming.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SOURCE CODE VIEWER                                       -->
+  <!-- ======================================================== -->
+  <section id="codebase" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div>
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Implementation</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1">Modular Python Codebase</h2>
+        <p class="text-slate-400 text-sm mt-1">406 lines of modular Python 3 code across 5 algorithm families. 7/7 automated verification tests pass.</p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="copy-code-btn" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 transition flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          Copy File Code
+        </button>
+      </div>
+    </div>
+
+    <!-- Code Viewer Panel -->
+    <div class="rounded-2xl glass-panel border border-slate-800 overflow-hidden shadow-2xl">
+      <!-- File Selector Tabs -->
+      <div class="p-3 bg-slate-900/90 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <button data-file="placement.py" class="code-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition">
+            placement.py
+          </button>
+          <button data-file="graph.py" class="code-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 border border-transparent transition">
+            graph.py
+          </button>
+          <button data-file="mst.py" class="code-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 border border-transparent transition">
+            mst.py
+          </button>
+          <button data-file="shortest.py" class="code-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 border border-transparent transition">
+            shortest.py
+          </button>
+          <button data-file="dp.py" class="code-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 border border-transparent transition">
+            dp.py
+          </button>
+          <button data-file="greedy.py" class="code-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 border border-transparent transition">
+            greedy.py
+          </button>
+          <button data-file="test_all.py" class="code-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 border border-transparent transition">
+            test_all.py
+          </button>
+        </div>
+
+        <div id="code-active-filename" class="text-xs font-mono text-slate-400 px-2 py-1 bg-slate-950 rounded border border-slate-800">
+          placement.py
+        </div>
+      </div>
+
+      <!-- Code Pre Container -->
+      <div class="p-6 bg-slate-950/95 overflow-x-auto max-h-[500px]">
+        <pre><code id="code-display" class="text-xs text-slate-200 leading-relaxed font-mono"></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- PROJECT TEAM & ACADEMIC CREDITS                         -->
+  <!-- ======================================================== -->
+  <section id="team" class="py-16 bg-slate-900/60 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Project Team</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1">Design & Analysis of Algorithms</h2>
+        <p class="text-slate-400 text-sm mt-2">B.Tech Computer Science & Engineering (2025–2029) &bull; Woxsen University</p>
+      </div>
+
+      <!-- Team Members Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <!-- Member 1 -->
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 text-center hover:border-cyan-500/40 transition">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-xl text-white mb-4 shadow-lg shadow-cyan-500/20">
+            AD
+          </div>
+          <h3 class="text-base font-bold text-white">Andrew Devasani</h3>
+          <div class="text-xs font-mono text-cyan-400 font-semibold mt-1">25WU0102067</div>
+          <div class="text-xs text-slate-400 mt-2">B.Tech CSE (2025–2029)</div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 text-center hover:border-cyan-500/40 transition">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center font-bold text-xl text-white mb-4 shadow-lg shadow-teal-500/20">
+            SV
+          </div>
+          <h3 class="text-base font-bold text-white">Sathyanarayana Varma</h3>
+          <div class="text-xs font-mono text-cyan-400 font-semibold mt-1">25WU0102088</div>
+          <div class="text-xs text-slate-400 mt-2">B.Tech CSE (2025–2029)</div>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 text-center hover:border-cyan-500/40 transition">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center font-bold text-xl text-white mb-4 shadow-lg shadow-amber-500/20">
+            DR
+          </div>
+          <h3 class="text-base font-bold text-white">G. Daiwik Reddy</h3>
+          <div class="text-xs font-mono text-cyan-400 font-semibold mt-1">25WU0102340</div>
+          <div class="text-xs text-slate-400 mt-2">B.Tech CSE (2025–2029)</div>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="p-6 rounded-2xl glass-panel border border-slate-800 text-center hover:border-cyan-500/40 transition">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-purple-500 to-indigo-600 flex items-center justify-center font-bold text-xl text-white mb-4 shadow-lg shadow-purple-500/20">
+            KC
+          </div>
+          <h3 class="text-base font-bold text-white">G. Keerthan Chowdary</h3>
+          <div class="text-xs font-mono text-cyan-400 font-semibold mt-1">25WU0102076</div>
+          <div class="text-xs text-slate-400 mt-2">B.Tech CSE (2025–2029)</div>
+        </div>
+      </div>
+
+      <!-- Bibliography & Citations -->
+      <div class="p-6 rounded-2xl glass-panel border border-slate-800 text-xs text-slate-400 space-y-2">
+        <div class="text-sm font-bold text-white mb-2">Key References & Academic Literature:</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-slate-300">
+          <div>&bull; <strong>Kruskal (1956)</strong> &bull; On the shortest spanning subtree of a graph and the traveling salesman problem.</div>
+          <div>&bull; <strong>Prim (1957)</strong> &bull; Shortest connection networks and some generalizations.</div>
+          <div>&bull; <strong>Dijkstra (1959)</strong> &bull; A note on two problems in connexion with graphs.</div>
+          <div>&bull; <strong>Floyd (1962) / Warshall (1962)</strong> &bull; Algorithm 97: Shortest path / A boolean matrix theorem.</div>
+          <div>&bull; <strong>Johnson (1977)</strong> &bull; Efficient algorithms for shortest paths in sparse networks.</div>
+          <div>&bull; <strong>Martello & Toth (1990)</strong> &bull; Knapsack Problems: Algorithms and Computer Implementations.</div>
+          <div>&bull; <strong>Cormen, Leiserson, Rivest, Stein (CLRS)</strong> &bull; Introduction to Algorithms, 4th Edition.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- FOOTER                                                   -->
+  <!-- ======================================================== -->
+  <footer class="py-8 bg-slate-950 border-t border-slate-800 text-xs text-slate-400 text-center">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        &copy; 2026 Cloud Task Placement &bull; Design and Analysis of Algorithms Internal Project &bull; Woxsen University
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="#overview" class="hover:text-white transition">Overview</a>
+        <a href="#simulator" class="hover:text-white transition">Simulator</a>
+        <a href="#algorithms" class="hover:text-white transition">Algorithms</a>
+        <a href="#experiments" class="hover:text-white transition">Results</a>
+        <a href="#codebase" class="hover:text-white transition">Source</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="code_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
