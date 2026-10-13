@@ -2,8 +2,8 @@
 
 ### 🚀 Quick Links:
 - 🌐 **Live Website:** [cloud placement](https://keerthanchowdary0369.github.io/cloud-task-placement/)
-- 📊 **Presentation Slides (18 Slides):** [**PRESENTATION.md**](PRESENTATION.md) *(Directly opens in GitHub)*
-- 📑 **Full Academic Report:** [**REPORT.md**](REPORT.md) *(Directly opens in GitHub)*
+- 📑 **Full Academic Report:** [**REPORT.md**](REPORT.md) / [**docs/REPORT.md**](docs/REPORT.md) *(Directly opens in GitHub)*
+- 📊 **Presentation Slides (18 Slides):** [**PRESENTATION.md**](PRESENTATION.md) / [**docs/PRESENTATION.md**](docs/PRESENTATION.md) *(Directly opens in GitHub)*
 - 📥 **Download PowerPoint (.pptx):** [**Cloud_Task_Placement_Project.pptx**](docs/Cloud_Task_Placement_Project.pptx)
 
 **Design and Analysis of Algorithms | Internal Project**  
@@ -71,6 +71,12 @@ cloud-task-placement-web/
 ├── app.js                       # Complete JS algorithm simulation & canvas engine
 ├── styles.css                   # Custom styles, glassmorphism, animations
 ├── code_data.js                 # Embedded Python codebase for the interactive viewer
+├── PRESENTATION.md              # 18-slide presentation walkthrough
+├── REPORT.md                    # Complete PBL project report
+├── docs/                        # Project documentation & presentation assets
+│   ├── REPORT.md                # Academic report in docs folder
+│   ├── PRESENTATION.md          # Presentation slides in docs folder
+│   └── Cloud_Task_Placement_Project.pptx # Native PowerPoint file
 ├── assets/
 │   └── images/                  # High-res publication benchmark plots
 │       ├── topology_placement.png
