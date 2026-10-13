@@ -1,10 +1,12 @@
 # Cloud Task Placement — Interactive Research & Simulation Website
 
-### 🚀 Quick Links:
+### 🚀 Direct Viewers (Directly Opens in GitHub):
 - 🌐 **Live Website:** [cloud placement](https://keerthanchowdary0369.github.io/cloud-task-placement/)
-- 📑 **Full Academic Report:** [**REPORT.md**](REPORT.md) *(Directly opens in GitHub)*
-- 📊 **Presentation Slides (18 Slides):** [**PRESENTATION.md**](PRESENTATION.md) *(Directly opens in GitHub)*
-- 📥 **Download PBL Report (.docx):** [**Cloud_Task_Placement_PBL_Report.docx**](docs/Cloud_Task_Placement_PBL_Report.docx)
+- 📑 **PBL Academic Report (PDF):** [**Cloud_Task_Placement_PBL_Report.pdf**](docs/Cloud_Task_Placement_PBL_Report.pdf) *(Opens directly in GitHub)*
+- 📊 **Presentation Slides (PDF):** [**Cloud_Task_Placement_Project.pdf**](docs/Cloud_Task_Placement_Project.pdf) *(Opens directly in GitHub)*
+- 📑 **PBL Academic Report (Markdown):** [**REPORT.md**](REPORT.md) *(Opens directly in GitHub)*
+- 📊 **Presentation Slides (Markdown):** [**PRESENTATION.md**](PRESENTATION.md) *(Opens directly in GitHub)*
+- 📥 **Download Word Report (.docx):** [**Cloud_Task_Placement_PBL_Report.docx**](docs/Cloud_Task_Placement_PBL_Report.docx)
 - 📥 **Download PowerPoint (.pptx):** [**Cloud_Task_Placement_Project.pptx**](docs/Cloud_Task_Placement_Project.pptx)
 
 **Design and Analysis of Algorithms | Internal Project**  
@@ -75,6 +77,8 @@ cloud-task-placement-web/
 ├── PRESENTATION.md              # 18-slide presentation walkthrough
 ├── REPORT.md                    # Complete PBL project report
 ├── docs/                        # Project documentation & presentation assets
+│   ├── Cloud_Task_Placement_PBL_Report.pdf  # Academic Report (opens directly in GitHub)
+│   ├── Cloud_Task_Placement_Project.pdf     # Presentation Slides (opens directly in GitHub)
 │   ├── Cloud_Task_Placement_PBL_Report.docx # Official PBL Report document (.docx)
 │   └── Cloud_Task_Placement_Project.pptx    # Native PowerPoint file (.pptx)
 ├── assets/
