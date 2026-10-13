@@ -1,10 +1,15 @@
 # Cloud Task Placement — Interactive Research & Simulation Website
 
-🌐 **Live Website:** [cloud placement](https://keerthanchowdary0369.github.io/cloud-task-placement/)
+### 🚀 Quick Links:
+- 🌐 **Live Website:** [cloud placement](https://keerthanchowdary0369.github.io/cloud-task-placement/)
+- 📊 **Presentation Slides (18 Slides):** [**PRESENTATION.md**](PRESENTATION.md) *(Directly opens in GitHub)*
+- 📑 **Full Academic Report:** [**REPORT.md**](REPORT.md) *(Directly opens in GitHub)*
+- 📥 **Download PowerPoint (.pptx):** [**Cloud_Task_Placement_Project.pptx**](docs/Cloud_Task_Placement_Project.pptx)
 
 **Design and Analysis of Algorithms | Internal Project**  
 **Institution:** Woxsen University, School of Technology  
 **Program:** B.Tech Computer Science & Engineering (2025–2029)  
+**Faculty Guide:** Dr. Syed Javeed Pasha  
 
 ---
 
