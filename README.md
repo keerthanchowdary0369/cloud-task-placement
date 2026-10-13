@@ -83,7 +83,12 @@ cloud-task-placement-web/
 │   ├── simplilearn_dsa_certificate.png      # Simplilearn DSA certificate (PNG)
 │   ├── hackerrank_python_certificate.png    # HackerRank Python certificate (PNG)
 │   ├── leetcode_dsa_progress_1.png          # LeetCode 125+ solved analytics
-│   └── leetcode_solution_submission.png     # LeetCode 97% runtime benchmark
+│   ├── leetcode_solution_submission.png     # LeetCode 97% runtime benchmark
+│   ├── leetcode_gcd_of_strings_100pct.png   # GCD of Strings (0ms, Beats 100%)
+│   ├── leetcode_find_peak_element_100pct.png # Find Peak Element (0ms, Beats 100%)
+│   ├── leetcode_letter_combinations_backtracking_100pct.png # Letter Combinations (0ms, Beats 100%)
+│   ├── leetcode_koko_eating_bananas_binary_search.png # Koko Eating Bananas (Binary Search)
+│   └── leetcode_merge_strings_alternately.png # Merge Strings Alternately (Two Pointers)
 ├── docs/                        # Project documentation & presentation assets
 │   ├── Cloud_Task_Placement_PBL_Report.pdf  # Academic Report (opens directly in GitHub)
 │   ├── Cloud_Task_Placement_Project.pdf     # Presentation Slides (opens directly in GitHub)
