@@ -14,7 +14,7 @@ This page contains verified certifications in **Data Structures, Algorithms (DSA
 - [1. Basics of Data Structures and Algorithms — Simplilearn](#1-basics-of-data-structures-and-algorithms--simplilearn)
 - [2. HackerRank Certificate — Python (Basic)](#2-hackerrank-certificate--python-basic)
 - [3. LeetCode Algorithmic Problem Solving & DAA Practice](#3-leetcode-algorithmic-problem-solving--daa-practice)
-  - [3.1 Problem Solving Portfolio (125+ Solved)](#31-problem-solving-portfolio-125-solved)
+  - [3.1 LeetCode Certificate — Practice History (125+ Solved)](#31-leetcode-certificate--practice-history-125-solved)
   - [3.2 Performance & Execution Speed Benchmark (3 ms - Beats 97%)](#32-performance--execution-speed-benchmark-3-ms---beats-97)
   - [3.3 100% Runtime Benchmark: Greatest Common Divisor of Strings (0 ms - Beats 100%)](#33-100-runtime-benchmark-greatest-common-divisor-of-strings-0-ms---beats-100)
   - [3.4 100% Runtime & 96.8% Memory Benchmark: Find Peak Element (0 ms - Beats 100%)](#34-100-runtime--968-memory-benchmark-find-peak-element-0-ms---beats-100)
@@ -55,13 +55,15 @@ This page contains verified certifications in **Data Structures, Algorithms (DSA
 
 ## 3. LeetCode Algorithmic Problem Solving & DAA Practice
 
-### 3.1 Problem Solving Portfolio (125+ Solved)
-![LeetCode Practice History and Analytics](certificates/leetcode_dsa_progress_1.png)
+### 3.1 LeetCode Certificate — Practice History (125+ Solved)
+![LeetCode Certificate](certificates/leetcode_certificate.png)
 
+- **Certificate / Credential:** LeetCode Algorithmic Problem Solving Practice History & Performance Analytics
 - **Total Problems Solved:** **125 Problems** (54 Easy, 70 Medium, 1 Hard)
 - **Submissions:** 214 Submissions
 - **Acceptance Rate:** **97.7%**
 - **Ranking / Metric:** Beats **84.9%** of platform participants
+- **Direct Image Viewer:** [leetcode_certificate.png](certificates/leetcode_certificate.png) *(Opens directly in GitHub)*
 - **Core Algorithm Topics Covered:**
   - Dynamic Programming (0-1 Knapsack, Subsequences, Unique Paths, House Robber)
   - Graph Algorithms & Shortest Paths (BFS, DFS, Dijkstra, Topo-sort)
@@ -149,7 +151,7 @@ All files below open inline directly on GitHub:
 |:---:|:---|:---|:---|:---|
 | 1 | **Simplilearn DSA Certificate** | Data Structures & Algorithms | Official Course Completion (`10837185`) | [certificates/simplilearn_dsa_certificate.pdf](certificates/simplilearn_dsa_certificate.pdf) |
 | 2 | **HackerRank Certificate** | Python Core Programming | Skill Assessment Passed (`22B072B4864D`) | [certificates/hackerrank_certificate.png](certificates/hackerrank_certificate.png) |
-| 3 | **LeetCode DSA Progress Analytics** | Comprehensive DAA Practice | 125+ Solved (97.7% Acceptance) | [certificates/leetcode_dsa_progress_1.png](certificates/leetcode_dsa_progress_1.png) |
+| 3 | **LeetCode Certificate** | Practice History & Analytics | 125+ Solved (97.7% Acceptance) | [certificates/leetcode_certificate.png](certificates/leetcode_certificate.png) |
 | 4 | **LeetCode 75 Submission** | Algorithmic Optimization | 3 ms (Beats 97.05%) | [certificates/leetcode_solution_submission.png](certificates/leetcode_solution_submission.png) |
 | 5 | **GCD of Strings Submission** | Euclidean Algorithm & Number Theory | **0 ms (Beats 100.00%)** | [certificates/leetcode_gcd_of_strings_100pct.png](certificates/leetcode_gcd_of_strings_100pct.png) |
 | 6 | **Find Peak Element Submission** | Divide & Conquer / Binary Search | **0 ms (Beats 100.00%)** | [certificates/leetcode_find_peak_element_100pct.png](certificates/leetcode_find_peak_element_100pct.png) |
