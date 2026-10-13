@@ -1,5 +1,7 @@
 # Cloud Task Placement — Interactive Research & Simulation Website
 
+🌐 **Live Website:** [cloud placement](https://keerthanchowdary0369.github.io/cloud-task-placement/)
+
 **Design and Analysis of Algorithms | Internal Project**  
 **Institution:** Woxsen University, School of Technology  
 **Program:** B.Tech Computer Science & Engineering (2025–2029)  
@@ -32,6 +34,12 @@ This project implements an end-to-end combinatorial optimization pipeline for cl
 2. **Overload Resilience:** Under heavy load ($\text{load} = 1.5$), Greedy+DP achieves **1.07 ms average latency vs 3.73 ms for Nearest-First (3.5x lower)** at identical total utility.
 3. **Sparse APSP Speedup:** Johnson's algorithm is **12x faster than Floyd-Warshall at 200 servers** (24.5 ms vs 303.2 ms).
 4. **Backbone Efficiency:** MST backbone achieves **73.4%–74.1% link savings** and **82%–84% cost savings** with a 1.76x–2.68x latency stretch.
+
+---
+
+## 🌐 Live Website Access
+The interactive visualization and simulation platform is available online at:  
+👉 **[cloud placement](https://keerthanchowdary0369.github.io/cloud-task-placement/)**
 
 ---
 
