@@ -81,7 +81,7 @@ cloud-task-placement-web/
 ├── certificates/                # Certificate image & PDF credentials
 │   ├── simplilearn_dsa_certificate.pdf      # Simplilearn DSA certificate (PDF)
 │   ├── simplilearn_dsa_certificate.png      # Simplilearn DSA certificate (PNG)
-│   ├── hackerrank_python_certificate.png    # HackerRank Python certificate (PNG)
+│   ├── hackerrank_certificate.png           # HackerRank Python certificate (PNG)
 │   ├── leetcode_dsa_progress_1.png          # LeetCode 125+ solved analytics
 │   ├── leetcode_solution_submission.png     # LeetCode 97% runtime benchmark
 │   ├── leetcode_gcd_of_strings_100pct.png   # GCD of Strings (0ms, Beats 100%)

@@ -12,7 +12,7 @@ This page contains verified certifications in **Data Structures, Algorithms (DSA
 
 ## 📑 Quick Navigation
 - [1. Basics of Data Structures and Algorithms — Simplilearn](#1-basics-of-data-structures-and-algorithms--simplilearn)
-- [2. Python (Basic) Skill Certification — HackerRank](#2-python-basic-skill-certification--hackerrank)
+- [2. HackerRank Certificate — Python (Basic)](#2-hackerrank-certificate--python-basic)
 - [3. LeetCode Algorithmic Problem Solving & DAA Practice](#3-leetcode-algorithmic-problem-solving--daa-practice)
   - [3.1 Problem Solving Portfolio (125+ Solved)](#31-problem-solving-portfolio-125-solved)
   - [3.2 Performance & Execution Speed Benchmark (3 ms - Beats 97%)](#32-performance--execution-speed-benchmark-3-ms---beats-97)
@@ -39,17 +39,17 @@ This page contains verified certifications in **Data Structures, Algorithms (DSA
 
 ---
 
-## 2. Python (Basic) Skill Certification — HackerRank
+## 2. HackerRank Certificate — Python (Basic)
 
-![HackerRank Python Basic Certificate](certificates/hackerrank_python_certificate.png)
+![HackerRank Certificate](certificates/hackerrank_certificate.png)
 
-- **Assessment:** Python (Basic) Skill Certification Test
+- **Certificate Title:** Certificate of Accomplishment — Python (Basic)
 - **Presented To:** Keerthan Chowdary
 - **Platform:** HackerRank
-- **Date of Completion:** 05 October 2026
+- **Earned On:** 05 Oct, 2026
 - **Verification ID:** `22B072B4864D`
 - **Authorized Signatory:** Harishankaran K (CTO, HackerRank)
-- **Direct Image:** [hackerrank_python_certificate.png](certificates/hackerrank_python_certificate.png)
+- **Direct Image Viewer:** [hackerrank_certificate.png](certificates/hackerrank_certificate.png) *(Opens directly in GitHub)*
 
 ---
 
@@ -148,7 +148,7 @@ All files below open inline directly on GitHub:
 | # | Credential / Proof | Topic / Concept | Metric | Direct GitHub Link |
 |:---:|:---|:---|:---|:---|
 | 1 | **Simplilearn DSA Certificate** | Data Structures & Algorithms | Official Course Completion | [certificates/simplilearn_dsa_certificate.pdf](certificates/simplilearn_dsa_certificate.pdf) \| [PNG](certificates/simplilearn_dsa_certificate.png) |
-| 2 | **HackerRank Python Certificate** | Python Core Programming | Skill Assessment Passed | [certificates/hackerrank_python_certificate.png](certificates/hackerrank_python_certificate.png) |
+| 2 | **HackerRank Certificate** | Python Core Programming | Skill Assessment Passed (`22B072B4864D`) | [certificates/hackerrank_certificate.png](certificates/hackerrank_certificate.png) |
 | 3 | **LeetCode DSA Progress Analytics** | Comprehensive DAA Practice | 125+ Solved (97.7% Acceptance) | [certificates/leetcode_dsa_progress_1.png](certificates/leetcode_dsa_progress_1.png) |
 | 4 | **LeetCode 75 Submission** | Algorithmic Optimization | 3 ms (Beats 97.05%) | [certificates/leetcode_solution_submission.png](certificates/leetcode_solution_submission.png) |
 | 5 | **GCD of Strings Submission** | Euclidean Algorithm & Number Theory | **0 ms (Beats 100.00%)** | [certificates/leetcode_gcd_of_strings_100pct.png](certificates/leetcode_gcd_of_strings_100pct.png) |
