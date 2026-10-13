@@ -27,7 +27,7 @@ This page contains verified certifications in **Data Structures, Algorithms (DSA
 
 ## 1. Basics of Data Structures and Algorithms — Simplilearn
 
-![Simplilearn Data Structures and Algorithms Certificate](certificates/simplilearn_dsa_certificate.png)
+> 📄 **Official PDF Certificate:** [**simplilearn_dsa_certificate.pdf**](certificates/simplilearn_dsa_certificate.pdf) *(Opens and renders directly in GitHub's built-in PDF viewer)*
 
 - **Course Title:** Basics of Data Structures and Algorithms
 - **Awarded To:** G. Keerthan Chowdary
@@ -35,7 +35,7 @@ This page contains verified certifications in **Data Structures, Algorithms (DSA
 - **Issue Date:** 5th October 2026
 - **Certificate Code:** `10837185`
 - **Authorized Signatory:** Krishna Kumar (CEO, Simplilearn)
-- **Direct PDF Viewer:** [simplilearn_dsa_certificate.pdf](certificates/simplilearn_dsa_certificate.pdf) *(Opens directly in GitHub's PDF viewer)*
+- **Direct PDF Viewer:** [simplilearn_dsa_certificate.pdf](certificates/simplilearn_dsa_certificate.pdf)
 
 ---
 
@@ -147,7 +147,7 @@ All files below open inline directly on GitHub:
 
 | # | Credential / Proof | Topic / Concept | Metric | Direct GitHub Link |
 |:---:|:---|:---|:---|:---|
-| 1 | **Simplilearn DSA Certificate** | Data Structures & Algorithms | Official Course Completion | [certificates/simplilearn_dsa_certificate.pdf](certificates/simplilearn_dsa_certificate.pdf) \| [PNG](certificates/simplilearn_dsa_certificate.png) |
+| 1 | **Simplilearn DSA Certificate** | Data Structures & Algorithms | Official Course Completion (`10837185`) | [certificates/simplilearn_dsa_certificate.pdf](certificates/simplilearn_dsa_certificate.pdf) |
 | 2 | **HackerRank Certificate** | Python Core Programming | Skill Assessment Passed (`22B072B4864D`) | [certificates/hackerrank_certificate.png](certificates/hackerrank_certificate.png) |
 | 3 | **LeetCode DSA Progress Analytics** | Comprehensive DAA Practice | 125+ Solved (97.7% Acceptance) | [certificates/leetcode_dsa_progress_1.png](certificates/leetcode_dsa_progress_1.png) |
 | 4 | **LeetCode 75 Submission** | Algorithmic Optimization | 3 ms (Beats 97.05%) | [certificates/leetcode_solution_submission.png](certificates/leetcode_solution_submission.png) |
